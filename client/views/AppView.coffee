@@ -12,6 +12,11 @@ class window.AppView extends Backbone.View
 
   initialize: ->
     @render()
+    @listenTo @model, 'bust', ->
+      setTimeout(->
+        $('body').empty()
+        new AppView(model: new App()).$el.appendTo 'body',
+      3000)
 
   render: ->
     @$el.children().detach()

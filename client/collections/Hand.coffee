@@ -2,10 +2,31 @@ class window.Hand extends Backbone.Collection
 
   model: Card
 
+  checkScore: ->
+    scoreToCheck = do @scores
+    if scoreToCheck[0] > 21 then do @bust
+    else if scoreToCheck[1] is 21 or scoreToCheck[0] is 21
+      @win
+
   initialize: (array, @deck, @isDealer) ->
 
   hit: ->
     @add(@deck.pop()).last()
+    do @checkScore
+    #alert "Win" if score < 21 for score in do scores
+
+  bust: ->
+    @trigger 'bust', @
+
+
+  stand: ->
+
+    @trigger 'stand', @
+
+
+
+  win: ->
+    @trigger 'win', @
 
   scores: ->
     # The scores are an array of potential scores.
