@@ -21,21 +21,6 @@
       return this.listenTo(this.get('dealerHand'), 'bust', this.winningHand);
     };
 
-    App.prototype.bustedHand = function() {
-      console.log('Busted');
-      return this.trigger('endGame', this);
-    };
-
-    App.prototype.winningHand = function() {
-      console.log('Winner');
-      return this.trigger('endGame', this);
-    };
-
-    App.prototype.losingHand = function() {
-      console.log('l0000z3rrrrrrrrrrr');
-      return this.trigger('endGame', this);
-    };
-
     App.prototype.compareHand = function(handArray) {
       var oneHand, otherHand, winner;
       oneHand = handArray[0];
@@ -48,6 +33,25 @@
       } else {
         return winner = oneHand;
       }
+    };
+
+    App.prototype.bustedHand = function() {
+      alert('Busted');
+      return this.trigger('endGame', this);
+    };
+
+    App.prototype.winningHand = function() {
+      var dealerHand;
+      alert('Winner');
+      dealerHand = 0;
+      return this.trigger('endGame', this);
+    };
+
+    App.prototype.losingHand = function() {
+      if (this.get('dealerHand').scores()[0] <= 21) {
+        alert('l0000z3rrrrrrrrrrr');
+      }
+      return this.trigger('endGame', this);
     };
 
     App.prototype.stood = function() {
@@ -65,7 +69,7 @@
       }
       if (playerHand > dealerHand) {
         return this.winningHand();
-      } else {
+      } else if (dealerHand <= 21) {
         return this.losingHand();
       }
     };

@@ -16,7 +16,7 @@ class window.AppView extends Backbone.View
       setTimeout(->
         $('body').empty()
         new AppView(model: new App()).$el.appendTo 'body',
-      3000)
+      1500)
 
   render: ->
     @$el.children().detach()

@@ -19,7 +19,6 @@
       if (scoreToCheck[0] > 21) {
         return this.bust();
       } else if (scoreToCheck[1] === 21 || scoreToCheck[0] === 21) {
-        console.log('CheckScore @win');
         return this.win();
       }
     };

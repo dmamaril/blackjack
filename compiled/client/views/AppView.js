@@ -29,7 +29,7 @@
           return new AppView({
             model: new App()
           }).$el.appendTo('body');
-        }, 3000);
+        }, 1500);
       });
     };
 

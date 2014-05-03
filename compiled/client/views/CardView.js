@@ -12,7 +12,7 @@
 
     CardView.prototype.className = 'card';
 
-    CardView.prototype.template = _.template('<%= rankName %> of <%= suitName %>');
+    CardView.prototype.template = _.template('<img src="../2014-04-blackjack/img/cards/<%= rankName %>-<%= suitName %>.png"></img>');
 
     CardView.prototype.initialize = function() {
       this.model.on('change', (function(_this) {
@@ -27,7 +27,7 @@
       this.$el.children().detach().end().html;
       this.$el.html(this.template(this.model.attributes));
       if (!this.model.get('revealed')) {
-        return this.$el.addClass('covered');
+        return this.$el.html('<img src="../2014-04-blackjack/img/card-back.png"></img>');
       }
     };
 
