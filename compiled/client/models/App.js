@@ -23,16 +23,17 @@
 
     App.prototype.bustedHand = function() {
       console.log('Busted');
-      return this.trigger('bust', this);
+      return this.trigger('endGame', this);
     };
 
     App.prototype.winningHand = function() {
       console.log('Winner');
-      return this.trigger('bust', this);
+      return this.trigger('endGame', this);
     };
 
     App.prototype.losingHand = function() {
-      return console.log('l0000z3rrrrrrrrrrr');
+      console.log('l0000z3rrrrrrrrrrr');
+      return this.trigger('endGame', this);
     };
 
     App.prototype.compareHand = function(handArray) {
@@ -50,20 +51,23 @@
     };
 
     App.prototype.stood = function() {
-      var dealerHand, dealerScore, playerHand, playerScore, _results;
+      var dealerHand, dealerScore, playerHand, playerScore;
       this.get('dealerHand').at(0).flip();
       playerScore = this.get('playerHand').scores();
       dealerScore = this.get('dealerHand').scores();
       dealerHand = this.compareHand(dealerScore);
       playerHand = this.compareHand(playerScore);
-      _results = [];
       while (playerHand > dealerHand && dealerHand < 21) {
         console.log('Hitting');
         this.get('dealerHand').hit();
         dealerScore = this.get('dealerHand').scores();
-        _results.push(dealerHand = this.compareHand(dealerScore));
+        dealerHand = this.compareHand(dealerScore);
       }
-      return _results;
+      if (playerHand > dealerHand) {
+        return this.winningHand();
+      } else {
+        return this.losingHand();
+      }
     };
 
     return App;

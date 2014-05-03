@@ -4,9 +4,11 @@ class window.Hand extends Backbone.Collection
 
   checkScore: ->
     scoreToCheck = do @scores
+    console.log scoreToCheck
     if scoreToCheck[0] > 21 then do @bust
     else if scoreToCheck[1] is 21 or scoreToCheck[0] is 21
-      @win
+      console.log 'CheckScore @win'
+      do @win
 
   initialize: (array, @deck, @isDealer) ->
 

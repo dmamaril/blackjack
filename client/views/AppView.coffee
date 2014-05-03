@@ -12,7 +12,7 @@ class window.AppView extends Backbone.View
 
   initialize: ->
     @render()
-    @listenTo @model, 'bust', ->
+    @listenTo @model, 'endGame', ->
       setTimeout(->
         $('body').empty()
         new AppView(model: new App()).$el.appendTo 'body',

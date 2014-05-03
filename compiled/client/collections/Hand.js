@@ -15,10 +15,12 @@
     Hand.prototype.checkScore = function() {
       var scoreToCheck;
       scoreToCheck = this.scores();
+      console.log(scoreToCheck);
       if (scoreToCheck[0] > 21) {
         return this.bust();
       } else if (scoreToCheck[1] === 21 || scoreToCheck[0] === 21) {
-        return this.win;
+        console.log('CheckScore @win');
+        return this.win();
       }
     };
 

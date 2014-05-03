@@ -23,7 +23,7 @@
 
     AppView.prototype.initialize = function() {
       this.render();
-      return this.listenTo(this.model, 'bust', function() {
+      return this.listenTo(this.model, 'endGame', function() {
         return setTimeout(function() {
           $('body').empty();
           return new AppView({

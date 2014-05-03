@@ -13,15 +13,16 @@ class window.App extends Backbone.Model
 
   bustedHand: ->
     console.log 'Busted'
-    @trigger 'bust', @
+    @trigger 'endGame', @
     #Reset game
 
   winningHand: ->
     console.log 'Winner'
-    @trigger 'bust', @
+    @trigger 'endGame', @
 
   losingHand: ->
     console.log 'l0000z3rrrrrrrrrrr'
+    @trigger 'endGame', @
 
   compareHand: (handArray)->
     oneHand = handArray[0]
@@ -48,8 +49,8 @@ class window.App extends Backbone.Model
     # get highest value less than 22 @getHand(playerCards)
 
 
-    #if playerHand > dealerHand then @winningHand()
-    #else @losingHand()
+    if playerHand > dealerHand then @winningHand()
+    else @losingHand()
 
 
     # TOMORROW
