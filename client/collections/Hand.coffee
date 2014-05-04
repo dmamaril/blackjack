@@ -14,7 +14,6 @@ class window.Hand extends Backbone.Collection
   hit: ->
     @add(@deck.pop()).last()
     do @checkScore
-    #alert "Win" if score < 21 for score in do scores
 
   bust: ->
     @trigger 'bust', @

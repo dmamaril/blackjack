@@ -18,6 +18,7 @@
       this.listenTo(this.get('playerHand'), 'bust', this.bustedHand);
       this.listenTo(this.get('playerHand'), 'stand', this.stood);
       this.listenTo(this.get('playerHand'), 'win', this.winningHand);
+      this.listenTo(this.get('dealerHand'), 'win', this.losingHand);
       return this.listenTo(this.get('dealerHand'), 'bust', this.winningHand);
     };
 

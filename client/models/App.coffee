@@ -10,10 +10,16 @@ class window.App extends Backbone.Model
 
 
 
-    @listenTo @get('playerHand'), 'bust', @bustedHand
-    @listenTo @get('playerHand'), 'stand', @stood
-    @listenTo @get('playerHand'), 'win', @winningHand
-    @listenTo @get('dealerHand'), 'bust', @winningHand
+    @listenTo @get('playerHand'), 'bust', @bustedHand # Event listener for player bust.
+
+    @listenTo @get('playerHand'), 'stand', @stood # Event listener for player stand.
+
+    @listenTo @get('playerHand'), 'win', @winningHand # Event listener for player win event.
+
+    @listenTo @get('dealerHand'), 'win', @losingHand #If dealer has winning hand, player loses.
+
+    @listenTo @get('dealerHand'), 'bust', @winningHand #If dealer busts, player wins.
+
 
   compareHand: (handArray)->
     oneHand = handArray[0]
